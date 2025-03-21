@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recipe Generator</title>
+</head>
+<body>
+    <h1>Upload a Food Image</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if food_name %}
+        <h2>Detected Food: {{ food_name }}</h2>
+        <img src="{{ url_for('static', filename='uploads/' + image) }}" alt="Uploaded Image" width="300">
+        <h3>Recipe:</h3>
+        <p>{{ recipe }}</p>
+    {% endif %}
+</body>
+</html>
