@@ -1,22 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Recipe Generator</title>
-</head>
-<body>
-    <h1>Upload a Food Image</h1>
-    <form action="/" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
-        <button type="submit">Upload</button>
-    </form>
+{% extends "base.html" %}
 
-    {% if food_name %}
-        <h2>Detected Food: {{ food_name }}</h2>
-        <img src="{{ url_for('static', filename='uploads/' + image) }}" alt="Uploaded Image" width="300">
-        <h3>Recipe:</h3>
-        <p>{{ recipe }}</p>
-    {% endif %}
-</body>
-</html>
+{% block title %}Home - FoodAI{% endblock %}
+
+{% block content %}
+<div class="upload-section">
+    <h1><i class="fas fa-camera"></i> Upload Food Image</h1>
+    <p class="subtitle">Let AI identify your food and get the recipe</p>
+    
+    <form action="/" method="post" enctype="multipart/form-data" class="upload-form">
+        <div class="file-input-wrapper">
+            <input type="file" id="file" name="file" accept="image/*" required>
+            <label for="file" class="file-input-label">
+                <i class="fas fa-cloud-upload-alt"></i> Choose Image
+            </label>
+        </div>
+        <button type="submit" class="btn">
+            <i class="fas fa-search"></i> Analyze Food
+        </button>
+    </form>
+</div>
+
+{% if food_name %}
+<div class="results-section">
+    <div class="card">
+        <h2><i class="fas fa-utensils"></i> Detected Food</h2>
+        <div class="food-info">
+            <h3>{{ food_name.replace('_', ' ').title() }}</h3>
+            <img src="{{ url_for('static', filename='uploads/' + image) }}" alt="Uploaded Food" class="food-image">
+        </div>
+    </div>
+
+    <div class="recipe-card">
+        <h3><i class="fas fa-book-open"></i> Recipe</h3>
+        <div class="recipe-content">
+            {{ recipe | replace('\n', '<br>') | safe }}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script>
+document.querySelector('input[type="file"]').addEventListener('change', function(e) {
+    const fileName = e.target.files[0].name;
+    const label = document.querySelector('.file-input-label');
+    label.innerHTML = `<i class="fas fa-image"></i> ${fileName}`;
+});
+</script>
+{% endblock %}
