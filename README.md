@@ -142,7 +142,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For any queries or support, please contact:
 - Prem Prajapati: [premprajapati6514@gmail.com]
-- Harsh Rohit: [your-email@example.com]
+- Harsh Rohit: [rohitharsh050@gmail.com]
 
 ## 🔄 Future Enhancements
 
