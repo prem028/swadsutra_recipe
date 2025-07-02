@@ -27,7 +27,6 @@ An AI-powered food recognition and recipe recommendation system that helps users
 
 ### Tools & Services
 - Docker (Containerization)
-- Gunicorn (WSGI HTTP Server)
 - Git (Version Control)
 - SMTP (Email Service)
 
