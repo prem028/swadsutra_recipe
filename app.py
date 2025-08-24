@@ -22,8 +22,8 @@ app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24))  # Use environment
 # Email configuration
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-SMTP_USERNAME = os.environ.get('SMTP_USERNAME', 'premprajapati6514@gmail.com')
-SMTP_PASSWORD = os.environ.get('SMTP_PASSWORD', 'fgjazraioiafhsoq')
+SMTP_USERNAME = os.environ.get('SMTP_USERNAME', '<smtp_username>')
+SMTP_PASSWORD = os.environ.get('SMTP_PASSWORD', '<smtp_Passwprd>')
 
 # Database configuration
 DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite:///users.db')
